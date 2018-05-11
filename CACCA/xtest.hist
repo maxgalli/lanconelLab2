@@ -1,0 +1,82 @@
+       100       100     0.000     0.200       120      0.00     0.200        0.
+ENERGIA CEDUTA DAL GAMMA  GENERAZIONE
+MONO          ETOT     N(E)        
+       101       100     0.000     0.200       120      0.00     0.200        0.
+ENERGIA CEDUTA DAL GAMMA  PRE AUSGABE
+MONO          ETOT     N(E) 
+       102       100     0.000     0.200       120      0.00     0.200        0.
+ENERGIA CEDUTA DAL GAMMA  RIVELAZIONE
+MONO          ETOT     N(E) 
+       103      1000     0.000     0.200       120      0.00     0.200        0.
+Energia senza gaussiana
+MONO          ETOT     N(E)       
+       104       100     0.000     0.200       120      0.00     0.200        0.
+ENERGIA CEDUTA NEL TRACKING DAL GAMMA   RIVELAZIONE
+MONO          ETOT     N(E) 
+       105       100     0.000     0.200       120      0.00     0.200        0.
+ENERGIA CEDUTA NEL TRACKING DAL GAMMA   PRESOGLIA
+MONO          ETOT     N(E)        
+       106      1000     0.000     0.200       120      0.00     0.200        0.
+ENERGIA CEDUTA DAL GAMMA  ACETTAZIONE
+MONO          ETOT     N(E)         
+       107      1000     0.000     0.200       120      0.00     0.200        0.
+Energia con gaussiana
+MONO          ETOT     N(E)       
+       108      1000     0.000     0.200       120      0.00     0.200        0.
+ENERGIA MASSIMA PER HIT DAL GAMMA  ACETTAZIONE
+MONO          ETOT     N(E)         
+       110       220    -1.100     1.100       120      0.00     1.200        0.
+COSTHETA GENERAZIONE
+MONO          ETOT     N(E)         
+       120       220    -1.100     1.100       120      0.00     1.200        0.
+COSTHETA ACCETTAZIONE
+MONO          ETOT     N(E)         
+       140       120    -1.000     25.00       120      0.00     1.200        0.
+NHITS : MULTIPLICITY 
+MONO          ETOT     N(E)          
+       160       200    -1.000      1.00       120      0.00     1.200        0.
+XPIXEL FOR TEST DELTA 0.1MM   
+MONO          ETOT     N(E)   
+       161       200    -1.000      1.00       120      0.00     1.200        0.
+XPIXEL FOR TEST DELTA 0.3MM  
+MONO          ETOT     N(E)
+       162       200    -1.000      1.00       120      0.00     1.200        0.
+XPIXEL FOR TEST  DELTA 0.5MM 
+MONO          ETOT     N(E)      
+       170       200    -1.000      1.00       120      0.00     1.200        0.
+XPIXMAX FOR TEST DELTA 0.1MM   
+MONO          ETOT     N(E)   
+       171       200    -1.000      1.00       120      0.00     1.200        0.
+XPIXMAX FOR TEST DELTA 0.3MM  
+MONO          ETOT     N(E)
+       172       200    -1.000      1.00       120      0.00     1.200        0.
+XPIXMAX FOR TEST  DELTA 0.5MM 
+MONO          ETOT     N(E) 
+       180       200    0.0000     0.200       120      0.00     1.200        0.
+BIOSOURCE IN WATER 100 MM TRACK
+MONO          ETOT     N(E) 
+       000       000     0.000       0.0       000      0.00       0.0        0.
+       200        60     -12.0      12.0        60     -12.0      12.0        0.
+DISTRIBUZIONE X VS Y NEL PIANO DI GENERAZIONE
+BIDI      X         Y          N(X,Y)
+       204        60     -12.0      12.0        60     -12.0      12.0        0.
+DISTRIBUZIONE X VS Y NEL PIANO DI TRASPORTO ( DE/DX )
+BIDI      X         Y          N(X,Y)
+       208        60     -12.0      12.0        60     -12.0      12.0        0.
+DISTRIBUZIONE X VS Y NEL PIANO DI RIVELAZIONE
+BIDI      X         Y          N(X,Y)       
+       202        60     -12.0      12.0        60    -12.00     12.00        0.
+DISTRIBUZIONE X VS Z NEL PIANO DI GENERAZIONE
+BIDI      X         Z          N(X,Z)
+       206        60     -12.0      12.0        60    -12.00     12.00        0.
+DISTRIBUZIONE X VS Y NEL PIANO DI TRASPORTO ( DE/DX )
+BIDI      X         Z          N(X,Z)
+       210        60     -1.00      1.00       100    -12.00     12.00        0.
+DISTRIBUZIONE X VS Y NEL PIANO DI RIVELAZIONE
+BIDI      X         Z          N(X,Z)       
+       212        80     -4.00      4.00        80     -4.00      4.00        0.
+DISTRIBUZIONE X VS Y NEL PIANO DEL COLLIMATORE
+BIDI      X         Z          N(X,Z)       
+       000       000     0.000       0.0       000      0.00       0.0        0.       
+
+12345678901234567890123456789012345678901234567890123456789012345678901234567890

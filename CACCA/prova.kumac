@@ -1,0 +1,99 @@
+*histo/create/1dh 997 'eslab' 100 0. 0.15
+*ntuple/project 997 900.eslab          
+*histo/plot 997                      
+
+integral 997 0 99
+
+ Macro Integral 1=0 2=0 3=0
+ *
+ *       This Macro computes the Sum, Integral and the Mean Value of a given
+ *       histogram between two channels. The input format should be:
+ *       `inte ID CH_low CH_high', where `inte' is the alias to execute
+ *       this kumac file, ID is the histogram id number, CH_low and
+ *       CH_high are low and high channel numbers. All three numbers
+ *       MUST be positive integers.     - Yingchao Zhang
+ *
+ *       Modified by :  Olivier Couet       (15th September 1994)
+ *
+    Trace off
+    If $VEXIST(Out)<>0 Then
+       V/Del Out
+    Endif
+    V/Create Out(3)
+ *
+ Application Comis Quit
+         Subroutine Integral(Id,Nl,Nh)
+         Character*80 Chtitl
+         Vector Out
+         Call Hgive(Id,Chtitl,Nx,Xmi,Xma,0,Ymi,Yma,Nwt,Loc)
+         If(Nl.Le.0) Nl=1
+         If(Nh.Ge.Nx) Nh=Nx
+* NICO aggiune S1 cambia per calcolare il prodotto di occorrenze e ascissa media del bin
+         S = (Xma-Xmi)/Float(Nx)
+*         S1 = (Xma+Xmi)/2.0
+         W = 0.0
+         Y = 0.0
+         Z = 0.0
+         Do I = Nl,Nh
+          X = Xmi + (Float(I)-0.5)*S
+          Y = Y   + Hx(Id,X)
+          W = W   + Hx(Id,X)*X
+         EndDo
+* NICO cambia per il calcolo dell'energia totale
+*         Z      = Y*S
+         Z      = W
+         W      = W/Y
+         Out(1) = Y
+         Out(2) = Z
+         Out(3) = W
+         End
+ Quit
+ *
+ *   Check the input parameter
+ *
+    Id = [1]
+    Nl = [2]
+    Nh = [3]
+    If [Id] = 0 Then
+       Read Id 'Histogram identifier'
+    Endif
+    If [Nl] = 0 Then
+       Read Nl 'First channel'
+    Endif
+    If [Nh] = 0 Then
+       Read Nh 'Last channel'
+    Endif
+ *
+ *   PLot the histogram and compute the integral
+ *
+    If $HEXIST([Id])=0 Then
+       Hrin [Id]
+    Endif
+    Histo/Plot [Id]([Nl]:[Nh])
+    Call Integral([Id],[Nl],[Nh])
+    Y = Out(1)
+    Z = Out(2)
+    W = Out(3)
+    Exec Rt 0.025 0.95 'Sum = '//[Y]
+    Exec Rt 0.025 0.90 'Integral = '//[Z]
+    Exec Rt 0.025 0.85 'Mean = '//[W]
+    V/Del Out
+ *
+ Return
+
+ Macro rt 1=0. 2=0. 3=' ' 4=.3
+ *
+    X1 = $GRAFINFO('WNXMIN')
+    X2 = $GRAFINFO('WNXMAX')
+    Y1 = $GRAFINFO('WNYMIN')
+    Y2 = $GRAFINFO('WNYMAX')
+    X  = ([X2]-[X1])*[1]+[X1]
+    Y  = ([Y2]-[Y1])*[2]+[Y1]
+    Set CHHE [4]
+    Set TXAL 3
+    Itx [X] [Y] [3]
+ *
+ Return
+ 
+
+

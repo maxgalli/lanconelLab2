@@ -1,0 +1,4 @@
+1 ND xslab < 0.2 .AND. 1
+1 ND xslab > -0.2 .AND. 1
+1 ND yslab < 0.2 .AND. 1
+1 ND yslab > -0.2 ND 1

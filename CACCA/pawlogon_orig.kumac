@@ -1,0 +1,263 @@
+
+*title 'pix: 2x2 ; geom_sx1 '
+
+histo/file 90            ./geom.hsb
+**
+fort/file  70            ./geom.ps
+graphic/metaf  70 -111   ./geom.ps
+
+graphic/opt stat
+graphic/opt fit
+graphic/opt htit
+**
+**********************************************************
+**
+ntuple/print 900
+graphic/opt liny
+**
+***********************************************************
+**
+** SERIE DI GRAFICI per analisi SNR e FWHM
+** 
+** 
+***********************************************************
+**
+zone 1 1
+
+***proiezione sul cristallo pixellato:
+ntuple/plot  900.ypixel%xpixel  801
+histo/op/reset 801
+***************************
+
+histo/create/2dh 802 'proiezione sul cristallo intero' 55 -5.5 5.5 50 -5.5 5.5
+ntuple/project 802 900.xslab%yslab
+histo/plot  802 
+histo/op/reset 802
+
+
+**************************************************
+*dati per SNR
+*****************************
+
+histo/create/2dh 803 'ROI 1 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 803 900.xpixel%ypixel xpixel.ge.(-0.16).and.xpixel.le.(0.06).and.ypixel.ge.(-0.16).and.ypixel.le.(0.06)
+histo/plot  803   
+histo/op/reset 803
+
+histo/create/2dh 804 'ROI 3 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 804 900.xpixel%ypixel xpixel.ge.(-0.38).and.xpixel.le.(0.28).and.ypixel.ge.(-0.38).and.ypixel.le.(0.28)
+histo/plot  804   
+histo/op/reset 804
+
+histo/create/2dh 805 'ROI 5 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 805 900.xpixel%ypixel xpixel.ge.(-0.60).and.xpixel.le.(0.50).and.ypixel.ge.(-0.60).and.ypixel.le.(0.50)
+histo/plot  805   
+histo/op/reset 805
+
+histo/create/2dh 806 'ROI 7 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 806 900.xpixel%ypixel xpixel.ge.(-0.82).and.xpixel.le.(0.72).and.ypixel.ge.(-0.82).and.ypixel.le.(0.72)
+histo/plot  806   
+histo/op/reset 806
+
+histo/create/2dh 807 'ROI 9 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 807 900.xpixel%ypixel xpixel.ge.(-1.04).and.xpixel.le.(0.94).and.ypixel.ge.(-1.04).and.ypixel.le.(0.94)
+histo/plot  807   
+histo/op/reset 807
+
+
+*****************
+*profilo xslab per fwhm (ricavo fwhm dalla sigma)
+*****************
+
+histo/create/1dh 1000 'x profile' 50 -5.0 5.0
+ntuple/project 1000 900.xslab 
+MAX 1000 6000
+histo/plot 1000 
+histo/op/reset 1000
+
+histo/create/1dh 1006 'profilo x gauss-fitting 50 bins' 50 -3.0 3.0
+ntuple/project 1006 900.xslab 
+MAX 1006 350
+histo/fit  1006 g
+histo/op/reset 1006
+
+histo/create/1dh 1001 'profilo x gauss-fitting 45 bins' 45 -3.0 3.0
+ntuple/project 1001 900.xslab 
+MAX 1001 350
+histo/fit  1001 g
+histo/op/reset 1001
+
+histo/create/1dh 1002 'profilo x gauss-fitting 40 bins' 40 -3.0 3.0
+ntuple/project 1002 900.xslab 
+MAX 1002 350
+histo/fit  1002 g
+histo/op/reset 1002
+
+histo/create/1dh 1004 'profilo x gauss-fitting 30 bins' 30 -3.0 3.0
+ntuple/project 1004 900.xslab 
+MAX 1004 350
+histo/fit  1004 g
+histo/op/reset 1004
+
+histo/create/1dh 1005 'profilo x gauss-fitting 20 bins' 20 -3.0 3.0
+ntuple/project 1005 900.xslab 
+MAX 1005 350
+histo/fit  1005 g
+histo/op/reset 1005
+
+**************8
+* profilo xpixel per fwhm
+**************
+*
+ntuple/plot  900.xpixel  10024
+histo/op/reset 10024
+
+
+histo/create/1dh 10010 'profilo xpixel spline smooth right bins' 45 -5.0 4.9
+ntuple/project 10010 900.xpixel 
+smooth  10010 2s 1.5 1
+histo/op/reset 10010
+
+histo/create/1dh 10023 'profilo xpixel gauss-fitting 30 bins' 30 -3.0 3.0
+ntuple/project 10023 900.xpixel 
+histo/fit  10023 g
+histo/op/reset 10023
+
+histo/create/1dh 10022 'profilo xpixel gauss-fitting 25 bins' 25 -3.0 3.0
+ntuple/project 10022 900.xpixel 
+histo/fit  10022 g
+histo/op/reset 10022
+
+histo/create/1dh 10021 'profilo xpixel gauss-fitting 20 bins' 20 -3.0 3.0
+ntuple/project 10021 900.xpixel 
+histo/fit  10021 g
+histo/op/reset 10021
+
+histo/create/1dh 10020 'profilo xpixel gauss-fitting 15 bins' 15 -3.0 3.0
+ntuple/project 10020 900.xpixel 
+histo/fit  10020 g
+histo/op/reset 10020
+
+histo/create/1dh 10040 'profilo xpixel gauss-fitting 12 bins' 12 -3.0 3.0
+ntuple/project 10040 900.xpixel
+histo/fit  10040 g
+histo/op/reset 10040
+
+histo/create/1dh 10041 'profilo xpixel gauss-fitting 10 bins' 10 -3.0 3.0
+ntuple/project 10041 900.xpixel
+histo/fit  10041 g
+histo/op/reset 10041
+
+histo/create/1dh 10050 'profilo xpixel gauss-fitting 8 bins' 8 -3.0 3.0
+ntuple/project 10050 900.xpixel
+histo/fit  10050 g
+histo/op/reset 10050
+
+
+**************************
+*profilo z
+**************************
+
+histo/create/1dh 998 'profilo z' 100 1.5 3.
+ntuple/project 998 900.zslab               
+smooth 998
+histo/op/reset 998
+
+************
+*eslab
+***********                                
+histo/create/1dh 997 'eslab' 100 0. 0.15
+ntuple/project 997 900.eslab           
+histo/plot 997                      
+histo/op/reset 997
+
+histo/create/1dh 996 'spettro energetico (eslabesr)' 100 0. 0.15
+ntuple/project 996 900.eslabesr           
+histo/plot 996                      
+histo/op/reset 996
+
+************
+*epixel
+***********                                
+histo/create/1dh 994 'epixel' 100 0. 0.15
+ntuple/project 994 900.epixel          
+histo/plot 994                      
+histo/op/reset 994
+
+histo/create/1dh 993 'spettro energetico (erpixel)' 100 0. 0.15
+ntuple/project 993 900.erpixel           
+histo/plot 993                      
+histo/op/reset 993
+
+*********************
+*coseno wi di partenza
+******************                           
+histo/create/1dh 995 'coseno wi' 100 -1.0 1.0
+ntuple/project 995 900.a3orig 
+histo/plot 995   
+histo/op/reset 995
+**************************
+***********************************************************
+**
+** SERIE DI TABELLE 20x20
+**
+***********************************************************
+histo/create/2dh 1111 ' ' 20 -2.000 2.000 20 -2.000 2.000
+ntuple/project 1111 900.xslab%yslab eslab.ge..138.and.zorig.gt.-3.5
+vector/create vet1(19,19)
+histogram/get_vect/contents 1111 vet1
+vector/write 'vet1' 'output.txt' '(19(1X,f6.0))' 
+MAX 1111 250
+function/angle 30 -20
+*graphics/set STAT 1100 0100
+*graphics/option nsta
+histo/plot 1111 lego
+
+histo/create/1dh 1112 ' ' 59 0.001 0.060
+ntuple/project 1112 900.eslab
+vector/create vet2(59)
+histogram/get_vect/contents 1112 vet2
+vector/write 'vet2' 'spectrum.txt' '(f6.0)'
+
+**************************************************
+*dati per SNR
+*****************************
+
+histo/create/2dh 803 'ROI 1 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 803 900.xpixel%ypixel eslabesr.ge.(0.098).and.xpixel.ge.(-0.16).and.xpixel.le.(0.06).and.ypixel.ge.(-0.16).and.ypixel.le.(0.06)
+histo/plot  803   
+histo/op/reset 803
+
+histo/create/2dh 808 'ROI 2 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 808 900.xpixel%ypixel eslabesr.ge.(0.098).and.xpixel.ge.(-0.38).and.xpixel.le.(0.06).and.ypixel.ge.(-0.38).and.ypixel.le.(0.06)
+histo/plot  808   
+histo/op/reset 808
+
+histo/create/2dh 804 'ROI 3 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 804 900.xpixel%ypixel eslabesr.ge.(0.098).and.xpixel.ge.(-0.38).and.xpixel.le.(0.28).and.ypixel.ge.(-0.38).and.ypixel.le.(0.28)
+histo/plot  804   
+histo/op/reset 804
+
+histo/create/2dh 809 'ROI 4 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 809 900.xpixel%ypixel eslabesr.ge.(0.098).and.xpixel.ge.(-0.60).and.xpixel.le.(0.28).and.ypixel.ge.(-0.60).and.ypixel.le.(0.28)
+histo/plot  809   
+histo/op/reset 809
+
+histo/create/2dh 805 'ROI 5 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 805 900.xpixel%ypixel eslabesr.ge.(0.098).and.xpixel.ge.(-0.60).and.xpixel.le.(0.50).and.ypixel.ge.(-0.60).and.ypixel.le.(0.50)
+histo/plot  805   
+histo/op/reset 805
+
+histo/create/2dh 806 'ROI 7 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 806 900.xpixel%ypixel eslabesr.ge.(0.098).and.xpixel.ge.(-0.82).and.xpixel.le.(0.72).and.ypixel.ge.(-0.82).and.ypixel.le.(0.72)
+histo/plot  806   
+histo/op/reset 806
+
+histo/create/2dh 807 'ROI 9 pix' 50 -5. 5. 50 -5. 5.
+ntuple/project 807 900.xpixel%ypixel eslabesr.ge.(0.098).and.xpixel.ge.(-1.04).and.xpixel.le.(0.94).and.ypixel.ge.(-1.04).and.ypixel.le.(0.94)
+histo/plot  807   
+histo/op/reset 807
+
+close 70
+
+
