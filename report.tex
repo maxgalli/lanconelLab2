@@ -1,0 +1,65 @@
+%        File: report.tex
+%     Created: Sat May 12 09:00 AM 2018 C
+% Last Change: Sat May 12 09:00 AM 2018 C
+%
+\documentclass[a4paper]{article}
+\usepackage{cite, graphicx, subcaption, amsmath}
+\usepackage[a4paper,top=3cm,bottom=4cm,right=3cm,left=3cm]{geometry}
+\usepackage{siunitx}
+\usepackage{indentfirst}
+
+\begin{document}
+\title{Monte Carlo Simulation of a Scintillation Detector}
+\author{Carlo Emilio Montanari, Massimiliano Galli}
+\date{May $11^{th}$, 2018}
+\maketitle
+
+\section{Introduction}
+The experiment consisted in using a software to simulate the interaction of photons with a simple particle detector (sodium iodide scintillator) in many different configurations. We analysed the histograms generated in order to study interesting aspects and check theoretical predictions.
+
+We can summarize the experiment in two main parts: in the first we varied detector's thickness and photons' energy and studied Point Spread Functions and detection efficiency; in the second we made the photons go through more materials and studied the effects of these changes.
+
+\section{Equipment}
+The equipment consisted in a PC running Scientific Linux. The softwares we used were EGS (Electron Gamma Shower) to model radiation transport and Paw++ (Physics Analysis Workstation) to analyze data.
+
+\section{Theoretical basis}
+\subsection{Interaction of radiation with matter}
+Generally speaking, a particle can be detected only if it interacts with matter: in every collision with an atom of the material it releases a part of its original energy, which is converted into human readable form, collected and studied. In the case of a scintillator, the energy released by the particle excites the atoms' outer electrons, which emit photons by photoelectric effect: the energy is thus converted into visible light.
+
+Depending on their energy, photons can undergo three different effects in matter: photoelectric effect, compton scattering and pair production. The photons we simulate have low energies, so only the first two are concerned.
+
+\subsection{Point Spread Function}
+The Point Spread Function (PSF from now on) is a parameter which describes the response of an image system to a point source. In our case, the PSF of the detector describes the blurriness introduced in the photons' beam due to the interactions which photons undergo in the detector itself.
+
+\section{First part}
+\subsection{Experimental procedure}
+In the first part we were asked to measure the PSF for a simple source/detector configuration in multiple conditions: the detector is a scintillator layer of sodium iodide (NaI) with a frontal area of 10 cm x 10 cm and the point source of photons is located at a distance of 10 cm from it. The varying parameters are the detector's thickness and the energy of the photon: for the first we used 0.5 mm, 1 mm, 2 mm, 5 mm and 10 mm while for the second we used 10 keV, 30 keV, 50 keV and 140 keV. The combination of these gives an amount of twenty different conditions.
+
+For every configuration we performed the following operations:
+\begin{itemize}
+  \item fit the PSFs (neglecting and considering the effect of blurring introduced by the light cone produced by the scintillator) in order to obtain the $\sigma$ and compute the FWHM using:
+    \begin{equation}
+      \text{FWHM}=2.35\sigma
+      \label{eq:fwhm}
+    \end{equation}
+  \item compute the scintillator detection efficiency (QDE) as the ratio between the number of detected photons and the number of photons emitted from the source:
+    \begin{equation}
+      \text{QDE}=\frac{N_{\gamma detected}}{N_{\gamma source}}
+      \label{eq:qde}
+    \end{equation}
+\end{itemize}
+
+\section{Second part}
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{detector2.png}
+  \caption{Configuration used in the second part of the experiment. The arrows represent the x (red), y (green) and z (blue) axis. The image was realized with Geant4.}
+  \label{fig:conf2}
+\end{figure}
+For the second part we used the configuration shown in Fig.~\ref{fig:conf2}. It consists of the same detector used before (with a fixed thickness of 5 mm) and of an aluminum box shaped located inside a box of water. The box of water is 10 cm x 10 cm x 40 cm while the aluminium box has a frontal area of 0.5 cm x 0.5 cm and a thickness of 4 mm, 6 mm, 8 mm and 10 mm, for an amount of four conditions. The source is positioned at a distance of 20 cm from the detector and is made of $4*10^{6}$ photons of energy equal to 40 keV; it emits with an opening angle of 8 degrees.
+
+The aim of this second part is to use the histograms of photons detected to calculate the contrast between the aluminium box and the background (detector).
+
+\end{document}
+
+
