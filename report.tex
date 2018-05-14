@@ -12,6 +12,8 @@
 \usepackage{hyperref}
 % For forcing image position (by using [H])
 \usepackage{float}
+% Need that just for \abs{}
+\usepackage{physics}
 
 \begin{document}
 \title{Monte Carlo Simulation of a Scintillation Detector}
@@ -38,7 +40,7 @@ The Point Spread Function is a parameter which describes the response of an imag
 
 \section{First part: PSF and QDE}
 \subsection{Experimental procedure and results}
-In the first part we were asked to measure the PSF for a simple source/detector configuration in multiple conditions: the detector is a scintillator layer of sodium iodide (NaI) with a frontal area of 10 cm $\times$ 10 cm and the point source of photons is located at a distance of 10 cm from it. The varying parameters are the detector's thickness and the energy of the photon: for the first we used 0.5 mm, 1 mm, 2 mm, 5 mm and 10 mm while for the second we used 10 keV, 30 keV, 50 keV and 140 keV. The combination of these gives an amount of twenty different conditions.
+In the first part we were asked to measure the PSF for a simple source/detector configuration in multiple conditions: the detector is a scintillator layer of sodium iodide (NaI) with a frontal area of 10 cm $\times$ 10 cm and the point source of photons is located at a distance of 10 cm from it. The varying parameters are the detector's thickness and the energy of the photon: for the first we used 0.5 mm, 1 mm, 2 mm, 5 mm and 10 mm while for the second we used 10 keV, 30 keV, 50 keV and 140 keV. The combination of these gives an amount of twenty different conditions. In each one of these conditions, $10^5$ photons are emitted.
 
 For every configuration we performed the following operations:
 \begin{itemize}
@@ -74,7 +76,8 @@ Each plot can be found in Appendix~\ref{sec:appendix_1}. Numerical results can b
   \centering
   \begin{tabular}{|c|c|c|c|c|}
    \hline
-   Detector thickness (mm) & $\gamma$ energy (keV) & FWHM (no blur) & FWHM (with blur) & QDE \\
+   Detector thickness & $\gamma$ energy & FWHM no blur & FWHM with blur & QDE \\
+   (mm) & (KeV) & (cm) & (cm) & \\
    \hline
    0.5 & 10 & $5.6 \times 10^{-5}$ & $3.8 \times 10^{-2}$ & 0.99831 \\
    \hline
@@ -139,7 +142,19 @@ The aim of this second part is to use the histograms of photons detected to calc
 \end{equation}
 
 \subsection{Results and discussion}
-\begin{table}[H]
+The results of the simulations are a group of distributions of interaction points in the form of Fig.~\ref{fig:2_2d}, where in general is possible to distinguish three regions:
+\begin{enumerate}
+  \item An internal square region with low density of points, which is given by the aluminum box blocking the photons.
+  \item A circular region with high density of points, with radius $\approx 2.8$ cm, which is coherent with the opening angle and the distance of the source (ideal value: 2.81 cm).
+  \item An external square region with low density of points, with size equal to the detector dimensions, given by the photons' scattering in the water.
+\end{enumerate}
+In order to determine the contrast between the circular region and the internal square region, since we are working not with a proper `image' but with a distribution of points, we consider for each case an histogram of the projection over the $y$ axis of every interaction point with $\abs{x} < 0.25$ mm, so that we consider only a slice of the same length of the aluminum box.
+
+With this method, we obtain the histograms in Fig.~\ref{fig:2_all}, where we can compare the point density in the circular region and in the square region. The results are shown in Table~\ref{tab:part_two}, where we have used the median values as intensities and considered the half widths as errors.
+
+It is possible to see in Fig.~\ref{fig:results_two} that the contrast grows with the increasing of the aluminum box thickness just as expected.
+
+\begin{table}[]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
@@ -158,9 +173,9 @@ The aim of this second part is to use the histograms of photons detected to calc
   \label{tab:part_two}
 \end{table}
 
-\begin{figure}[!htb]
+\begin{figure}[]
   \centering
-  \includegraphics[width=\textwidth]{plots/contrast.png}
+  \includegraphics[width=0.8\textwidth]{plots/contrast.png}
   \caption{Graphical visualization of the results of part two.}
   \label{fig:results_two}
 \end{figure}
@@ -289,7 +304,7 @@ The aim of this second part is to use the histograms of photons detected to calc
   \subfloat[][Box thickness $=$ 6 mm] {\includegraphics[width=0.45\textwidth]{ex_images/2_cut_06.jpg}}\\
   \subfloat[][Box thickness $=$ 8 mm] {\includegraphics[width=0.45\textwidth]{ex_images/2_cut_08.jpg}}
   \subfloat[][Box thickness $=$ 10 mm] {\includegraphics[width=0.45\textwidth]{ex_images/2_cut_contrast_10.jpg}}
-  \caption{moltobello anche questp.(cm on $x$ axis, number of interactions on $y$ axis)}
+  \caption{$y$ projection of the interaction points with $\abs{x}<0.25$mm. (cm on horizontal axis, number of interactions on vertical axis)}
   \label{fig:2_all}
 \end{figure}
 
