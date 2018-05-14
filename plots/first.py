@@ -67,7 +67,7 @@ plt.plot(thickness, tdata[2][::2], marker = "o", label = "50 Kev")
 plt.plot(thickness, tdata[3][::2], marker = "o", label = "140 Kev")
 
 plt.legend(title = "Photon energy:")
-plt.savefig("mm_fwhm_blur.png")
+plt.savefig("mm_fwhm_noblur.png")
 
 plt.clf()
 
@@ -82,6 +82,6 @@ plt.plot(thickness, tdata[2][1::2], marker = "o", label = "50 Kev")
 plt.plot(thickness, tdata[3][1::2], marker = "o", label = "140 Kev")
 
 plt.legend(title = "Photon energy:")
-plt.savefig("mm_fwhm_noblur.png")
+plt.savefig("mm_fwhm_blur.png")
 
 plt.clf()

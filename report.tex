@@ -59,12 +59,14 @@ Each plot can be found in Appendix~\ref{sec:appendix_1}. Numerical results can b
 \subsection{Discussion}
 \begin{figure}[!htb]
   \centering
-  \subfloat[][] {\includegraphics[width=0.45\textwidth]{plots/mm_fwhm_noblur.png}}
-  \subfloat[][] {\includegraphics[width=0.45\textwidth]{plots/mm_fwhm_blur.png}}\\
-  \subfloat[][] {\includegraphics[width=0.45\textwidth]{plots/kev_fwhm_noblur.png}}
-  \subfloat[][] {\includegraphics[width=0.45\textwidth]{plots/kev_fwhm_blur.png}}
-  \caption{PSF plots with detector thickness of 0.5 mm, no blur. (cm on $x$ axis, number of interactions on $y$ axis)}
-  \label{fig:plots_one}
+  \subfloat[][FWHM over detector thickness, no blur considered.] {\includegraphics[width=0.45\textwidth]{plots/mm_fwhm_noblur.png}}\quad
+  \subfloat[][FWHM over detector thickness, with blur considered.] {\includegraphics[width=0.45\textwidth]{plots/mm_fwhm_blur.png}}\\
+  \subfloat[][FWHM over photon energy, no blur considered.] {\includegraphics[width=0.45\textwidth]{plots/kev_fwhm_noblur.png}}\quad
+  \subfloat[][FWHM over photon energy, with blur considered.] {\includegraphics[width=0.45\textwidth]{plots/kev_fwhm_blur.png}}\\
+  \subfloat[][QDE over photon energy] {\includegraphics[width=0.45\textwidth]{plots/qde_en.png}}\quad
+  \subfloat[][QDE over detector thickness] {\includegraphics[width=0.45\textwidth]{plots/qde_th.png}}
+  \caption{Graphical visualization of the results of part one.}
+  \label{fig:results_one}
 \end{figure}
 
 
@@ -155,6 +157,13 @@ The aim of this second part is to use the histograms of photons detected to calc
   \caption{Results of part two.}
   \label{tab:part_two}
 \end{table}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{plots/contrast.png}
+  \caption{Graphical visualization of the results of part two.}
+  \label{fig:results_two}
+\end{figure}
 
 \clearpage
 
