@@ -3,10 +3,15 @@
 % Last Change: Sat May 12 09:00 AM 2018 C
 %
 \documentclass[a4paper]{article}
-\usepackage{cite, graphicx, subcaption, amsmath}
+\usepackage{cite, graphicx, subfig, amsmath}
 \usepackage[a4paper,top=3cm,bottom=4cm,right=3cm,left=3cm]{geometry}
 \usepackage{siunitx}
 \usepackage{indentfirst}
+
+% For better navigation
+\usepackage{hyperref}
+% For forcing image position (by using [H])
+\usepackage{float}
 
 \begin{document}
 \title{Monte Carlo Simulation of a Scintillation Detector}
@@ -49,11 +54,16 @@ For every configuration we performed the following operations:
     \end{equation}
 \end{itemize}
 
+\subsection{Results and discussion}
+For each configuration, we have plotted and executed a gaussian fit for the PSFs, with and without blurring, on the $x$ axis (we neglected the $y$ axis since we assume central symmetry for the whole experiment).
+
+Each plot can be found in Appendix~\ref{sec:appendix_1}. Numerical results can be found in Table~\ref{tab:part_one}.
+
 \begin{table}
   \centering
   \begin{tabular}{|c|c|c|c|c|}
    \hline
-   detector thickness (mm) & $\gamma$ energy (keV) & FWHM & FWHM & QDE \\
+   Detector thickness (mm) & $\gamma$ energy (keV) & FWHM (no blur) & FWHM (with blur) & QDE \\
    \hline
    0.5 & 10 & & & \\
    \hline
@@ -103,7 +113,7 @@ For every configuration we performed the following operations:
 
 \section{Second part}
 \subsection{Experimental procedure}
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.6\columnwidth]{detector2.png}
   \caption{Configuration used in the second part of the experiment. The arrows represent the x (red), y (green) and z (blue) axis. The image was realized with Geant4.}
@@ -118,11 +128,11 @@ The aim of this second part is to use the histograms of photons detected to calc
 \end{equation}
 
 \subsection{Results and discussion}
-\begin{table}[!htb]
+\begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
-    box thickness (mm) & $I_{b}$ & $I_{a}$ & $C$ \\
+    Box thickness (mm) & $I_{b}$ & $I_{a}$ & $C$ \\
     \hline
     4 & & & \\
     \hline
@@ -142,123 +152,125 @@ The aim of this second part is to use the histograms of photons detected to calc
 
 \appendix
 
-\section{Appendix 1}
+\section{Plots for the first part}
+\label{sec:appendix_1}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_010_xslab.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_030_xslab.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_050_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_140_xs.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_010_xslab.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_030_xslab.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_050_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_140_xs.jpg}}
+  \caption{PSF plots with detector thickness of 0.5 mm, no blur.}
   \label{fig:005_xs}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_010_xslabesr.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_030_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_050_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_005_140_xse.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_010_xslabesr.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_030_xse.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_050_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_005_140_xse.jpg}}
+  \caption{PSF plots with detector thickness of 0.5 mm, with blur.}
   \label{fig:005_xse}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_010_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_030_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_050_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_140_xs.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_010_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_030_xs.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_050_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_140_xs.jpg}}
+  \caption{PSF plots with detector thickness of 1 mm, no blur.}
   \label{fig:010_xs}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_010_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_030_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_050_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_010_140_xse.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_010_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_030_xse.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_050_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_010_140_xse.jpg}}
+  \caption{PSF plots with detector thickness of 1 mm, with blur.}
   \label{fig:010_xse}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_010_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_030_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_050_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_140_xs.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_010_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_030_xs.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_050_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_140_xs.jpg}}
+  \caption{PSF plots with detector thickness of 2 mm, no blur.}
   \label{fig:020_xs}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_010_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_030_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_050_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_020_140_xse.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_010_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_030_xse.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_050_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_020_140_xse.jpg}}
+  \caption{PSF plots with detector thickness of 2 mm, with blur.}
   \label{fig:020_xse}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_010_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_030_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_050_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_140_xs.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_010_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_030_xs.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_050_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_140_xs.jpg}}
+  \caption{PSF plots with detector thickness of 5 mm, no blur.}
   \label{fig:050_xs}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_010_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_030_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_050_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_050_140_xse.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_010_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_030_xse.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_050_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_050_140_xse.jpg}}
+  \caption{PSF plots with detector thickness of 5 mm, with blur.}
   \label{fig:050_xse}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_010_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_030_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_050_xs.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_140_xs.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_010_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_030_xs.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_050_xs.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_140_xs.jpg}}
+  \caption{PSF plots with detector thickness of 10 mm, no blur.}
   \label{fig:100_xs}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_010_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_030_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_050_xse.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/1_100_140_xse.jpg}
-  \caption{moltobello}
+  \subfloat[][$\gamma$ energy $=$ 10 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_010_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 30 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_030_xse.jpg}}\\
+  \subfloat[][$\gamma$ energy $=$ 50 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_050_xse.jpg}}
+  \subfloat[][$\gamma$ energy $=$ 140 KeV] {\includegraphics[width=0.45\textwidth]{ex_images/1_100_140_xse.jpg}}
+  \caption{PSF plots with detector thickness of 10 mm, with blur.}
   \label{fig:100_xse}
 \end{figure}
 
+\section{Plots for the second part}
+\label{sec:appendix_2}
 
-\section{Appendix 2}
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{ex_images/2_2d_10.jpg}
+  \includegraphics[width=0.9\textwidth]{ex_images/2_2d_10.jpg}
   \caption{moltobello}
   \label{fig:2_2d}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.49\textwidth]{ex_images/2_cut_04.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/2_cut_06.jpg}\\
-  \includegraphics[width=0.49\textwidth]{ex_images/2_cut_08.jpg}
-  \includegraphics[width=0.49\textwidth]{ex_images/2_cut_contrast_10.jpg}
+  \subfloat[][Box thickness $=$ 4 mm] {\includegraphics[width=0.45\textwidth]{ex_images/2_cut_04.jpg}}
+  \subfloat[][Box thickness $=$ 6 mm] {\includegraphics[width=0.45\textwidth]{ex_images/2_cut_06.jpg}}\\
+  \subfloat[][Box thickness $=$ 8 mm] {\includegraphics[width=0.45\textwidth]{ex_images/2_cut_08.jpg}}
+  \subfloat[][Box thickness $=$ 10 mm] {\includegraphics[width=0.45\textwidth]{ex_images/2_cut_contrast_10.jpg}}
   \caption{moltobello anche questp}
   \label{fig:2_all}
 \end{figure}
