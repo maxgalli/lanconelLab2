@@ -70,7 +70,14 @@ Each plot can be found in Appendix~\ref{sec:appendix_1}. Numerical results can b
   \caption{Graphical visualization of the results of part one.}
   \label{fig:results_one}
 \end{figure}
-
+By looking at Fig.~(\ref{fig:results_one}) we can do the following considerations:
+\begin{itemize}
+  \item (a),(c): if we don't consider the blurriness induced by the scintillator, the FWHM encreases with the energy of the photon and is more or less constant when the thickness of the detector varies;
+  \item (b): when we consider the blurriness, the FWHM encreases linearly with the thickness of the detector for every photon energy; this is fine, since longer path implies wider spread;
+  \item (d): considering the blurriness, we can see that for every thickness the FWHM decreases with the photon energy; this is predictable from the theory, since the cross section for the photoelectric effect decreases with the photon energy, so the photon will travel a longer path before startingthe interaction and the spread will be tighter;
+  \item (e),(f): even these two plots are perfectly explainable with the argumentation of the previous point: the efficiency decreases with the energy of the photon due to the cross section's trend and more or less encreases with the thickness of the detector.
+\end{itemize}
+Another interesting aspect to look at, referring to the distributions shown in Appendix 1, is the value of the reduced chi-square: in the greatest part of them we can see that it is much higher than one, meaning that the gaussian function we fitted the distribution to is not the right one.
 
 \begin{table}
   \centering
@@ -154,7 +161,7 @@ With this method, we obtain the histograms in Fig.~\ref{fig:2_all}, where we can
 
 It is possible to see in Fig.~\ref{fig:results_two} that the contrast grows with the increasing of the aluminum box thickness just as expected.
 
-\begin{table}[]
+\begin{table}[!htb]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
@@ -173,7 +180,7 @@ It is possible to see in Fig.~\ref{fig:results_two} that the contrast grows with
   \label{tab:part_two}
 \end{table}
 
-\begin{figure}[]
+\begin{figure}[!htb]
   \centering
   \includegraphics[width=0.8\textwidth]{plots/contrast.png}
   \caption{Graphical visualization of the results of part two.}
