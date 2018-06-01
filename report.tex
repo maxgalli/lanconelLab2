@@ -36,10 +36,17 @@ Generally speaking, a particle can be detected only if it interacts with matter:
 Depending on their energy, photons can undergo three different effects in matter: photoelectric effect, compton scattering and pair production. The photons we simulate have low energies, so only the first two are concerned.
 
 \subsection{Point Spread Function}
-The Point Spread Function is a parameter which describes the response of an image system to a point source. In our case, the PSF of the detector describes the blurriness induced in the photons' beam by the interactions which photons undergo in the detector itself.
+The Point Spread Function is a parameter which describes the response of an image system to a point source. In our case, the PSF of the detector describes the blurriness induced in the beam by the interactions which photons undergo in the detector itself.
 
 \section{First part: PSF and QDE}
 \subsection{Experimental procedure and results}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{detector1.png}
+  \caption{Configuration used in the first part of the experiment. The green line is the beam. The image was realized with Geant4.}
+  \label{fig:conf1}
+\end{figure}
+
 In the first part we were asked to measure the PSF for a simple source/detector configuration in multiple conditions: the detector is a scintillator layer of sodium iodide (NaI) with a frontal area of 10 cm $\times$ 10 cm and the point source of photons is located at a distance of 10 cm from it. The varying parameters are the detector's thickness and the energy of the photon: for the first we used 0.5 mm, 1 mm, 2 mm, 5 mm and 10 mm while for the second we used 10 keV, 30 keV, 50 keV and 140 keV. The combination of these gives an amount of twenty different conditions. In each one of these conditions, $10^5$ photons are emitted.
 
 For every configuration we performed the following operations:
@@ -72,12 +79,19 @@ Each plot can be found in Appendix~\ref{sec:appendix_1}. Numerical results can b
 \end{figure}
 By looking at Fig.~(\ref{fig:results_one}) we can do the following considerations:
 \begin{itemize}
-  \item (a),(c): if we don't consider the blurriness induced by the scintillator, the FWHM encreases with the energy of the photon and is more or less constant when the thickness of the detector varies;
+  \item (a),(c): if we don't consider the blurriness induced by the scintillator, the FWHM increases with the energy of the photon and is more or less constant when the thickness of the detector varies;
   \item (b): when we consider the blurriness, the FWHM encreases linearly with the thickness of the detector for every photon energy; this is fine, since longer path implies wider spread;
-  \item (d): considering the blurriness, we can see that for every thickness the FWHM decreases with the photon energy; this is predictable from the theory, since the cross section for the photoelectric effect decreases with the photon energy, so the photon will travel a longer path before startingthe interaction and the spread will be tighter;
-  \item (e),(f): even these two plots are perfectly explainable with the argumentation of the previous point: the efficiency decreases with the energy of the photon due to the cross section's trend and more or less encreases with the thickness of the detector.
+  \item (d): considering the blurriness, we can see that for every thickness the FWHM decreases with the photon energy; this is predictable from the theory, since the cross section for the photoelectric effect decreases with the photon energy, so the photon will travel a longer path before starting the interaction and the spread will be tighter;
+  \item (e),(f): even these two plots are perfectly explainable with the argumentation of the previous point: the efficiency decreases with the energy of the photon due to the cross section's trend and more or less increases with the thickness of the detector.
 \end{itemize}
 Another interesting aspect to look at, referring to the distributions shown in Appendix 1, is the value of the reduced chi-square: in the greatest part of them we can see that it is much higher than one, meaning that the gaussian function we fitted the distribution to is not the right one.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{photon_cross.png}
+  \caption{Photon cross section as a function of the energy. We can see that the dominant ones at the energy ranges we work with are the photoelectric effect and the Compton scattering.}
+  \label{fig:cross}
+\end{figure}
+
 
 \begin{table}
   \centering
@@ -142,14 +156,14 @@ Another interesting aspect to look at, referring to the distributions shown in A
 \end{figure}
 For the second part we used the configuration shown in Fig.~\ref{fig:conf2}. It consists of the same detector used before (with a fixed thickness of 5 mm) and of an aluminum box shaped located inside a box of water. The box of water is 10 cm $\times$ 10 cm $\times$ 40 cm while the aluminium box has a frontal area of 0.5 cm $\times$ 0.5 cm and a thickness of 4 mm, 6 mm, 8 mm and 10 mm, for an amount of four conditions. The source is positioned at a distance of 20 cm from the detector and is made of $4*10^{6}$ photons of energy equal to 40 keV; it emits with an opening angle of 8 degrees.
 
-The aim of this second part is to use the histograms of photons detected to calculate the contrast between the aluminium box and the background (detector). Calling $I_{b}$ the average intensity of the background and $I_{a}$ the average intensity of the part behind the aluminum box, we have compute the contrast $C$ using the following:
+The aim of this second part is to use the histograms of photons detected to calculate the contrast between the aluminium box and the background (detector). Calling $I_{b}$ the average intensity of the background and $I_{a}$ the average intensity of the part behind the aluminum box, we compute the contrast $C$ using the following:
 \begin{equation}
   C=\frac{I_{b}-I_{a}}{I_{b}}
   \label{eq:contrast}
 \end{equation}
 
 \subsection{Results and discussion}
-The results of the simulations are a group of distributions of interaction points in the form of Fig.~\ref{fig:2_2d}, where in general is possible to distinguish three regions:
+The results of the simulations are a group of distributions of interaction points in the form of Fig.~\ref{fig:2_2d}, where in general it is possible to distinguish three regions:
 \begin{enumerate}
   \item An internal square region with low density of points, which is given by the aluminum box blocking the photons.
   \item A circular region with high density of points, with radius $\approx 2.8$ cm, which is coherent with the opening angle and the distance of the source (ideal value: 2.81 cm).
