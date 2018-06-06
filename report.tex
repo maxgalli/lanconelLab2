@@ -9,7 +9,7 @@
 \usepackage{indentfirst}
 
 % For better navigation
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 % For forcing image position (by using [H])
 \usepackage{float}
 % Need that just for \abs{}
@@ -30,10 +30,16 @@ We can summarize the experiment in two main parts: in the first we varied detect
 The equipment consisted in a PC running Scientific Linux. The softwares we used were EGS (Electron Gamma Shower) to model radiation transport and Paw++ (Physics Analysis Workstation) to analyze data.
 
 \section{Theoretical basis}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{photon_cross.png}
+  \caption{Photon cross section as a function of the energy. We can see that the dominant ones at the energy ranges we work with are the photoelectric effect and the Compton scattering.}
+  \label{fig:cross}
+\end{figure}
 \subsection{Interaction of radiation with matter}
 Generally speaking, a particle can be detected only if it interacts with matter: in every collision with an atom of the material it releases a part of its original energy, which is converted into human readable form, collected and studied. In the case of a scintillator, the energy released by the particle excites the atoms' outer electrons, which emit photons by photoelectric effect: the energy is thus converted into visible light.
 
-Depending on their energy, photons can undergo three different effects in matter: photoelectric effect, compton scattering and pair production. The photons we simulate have low energies, so only the first two are concerned.
+Depending on their energy, photons can undergo three different effects in matter: photoelectric effect, compton scattering and pair production. The photons we simulate have low energies, so only the first two are concerned. A plot of the cross sections as a function of the energy is reported in Fig.~(\ref{fig:cross}).
 
 \subsection{Point Spread Function}
 The Point Spread Function is a parameter which describes the response of an image system to a point source. In our case, the PSF of the detector describes the blurriness induced in the beam by the interactions which photons undergo in the detector itself.
@@ -85,12 +91,6 @@ By looking at Fig.~(\ref{fig:results_one}) we can do the following consideration
   \item (e),(f): even these two plots are perfectly explainable with the argumentation of the previous point: the efficiency decreases with the energy of the photon due to the cross section's trend and more or less increases with the thickness of the detector.
 \end{itemize}
 Another interesting aspect to look at, referring to the distributions shown in Appendix 1, is the value of the reduced chi-square: in the greatest part of them we can see that it is much higher than one, meaning that the gaussian function we fitted the distribution to is not the right one.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\columnwidth]{photon_cross.png}
-  \caption{Photon cross section as a function of the energy. We can see that the dominant ones at the energy ranges we work with are the photoelectric effect and the Compton scattering.}
-  \label{fig:cross}
-\end{figure}
 
 
 \begin{table}
